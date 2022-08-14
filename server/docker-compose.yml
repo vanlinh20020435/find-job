@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  mysql-server:
+    image: mysql:8.0.29
+    container_name: mysql-sever
+    ports:
+      - "3636:3306"
+    volumes:
+      - ./docker_data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: linh2002
+  redis-server:
+      image: redis:7.0.4-alpine
+      container_name: redis-sever
+      restart: always
+      ports:
+        - '6363:6379'
+      command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+      volumes: 
+        - ./docker_data/redis:/data
+
